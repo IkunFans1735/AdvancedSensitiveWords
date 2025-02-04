@@ -8,7 +8,6 @@ import io.wdsj.asw.bukkit.listener.packet.ASWBookPacketListener;
 import io.wdsj.asw.bukkit.listener.packet.ASWChatPacketListener;
 import io.wdsj.asw.bukkit.listener.paper.PaperChatListener;
 import io.wdsj.asw.bukkit.listener.paper.PaperFakeMessageExecutor;
-import io.wdsj.asw.bukkit.listener.paper.PaperItemSpawnListener;
 import io.wdsj.asw.bukkit.setting.PluginSettings;
 import io.wdsj.asw.bukkit.util.Utils;
 import org.bukkit.Bukkit;
@@ -70,11 +69,6 @@ public class ListenerService {
         }
         if (settingsManager.getProperty(PluginSettings.ENABLE_PLAYER_ITEM_CHECK)) {
             registerEventListener(PlayerItemListener.class);
-            if (settingsManager.getProperty(PluginSettings.ITEM_MONITOR_SPAWN)) {
-                if (!registerEventListener(PaperItemSpawnListener.class)) {
-                    registerEventListener(ItemSpawnListener.class);
-                }
-            }
         }
         if (settingsManager.getProperty(PluginSettings.CHAT_BROADCAST_CHECK)) {
             if (isClassLoaded("org.bukkit.event.server.BroadcastMessageEvent")) {

@@ -1,7 +1,6 @@
 name: AdvancedSensitiveWords
 version: ${project.version}-${version.channel}
-# noinspection YAMLSchemaValidation
-main: ${plugin.mainClass}
+main: ${plugin.main}
 api-version: '1.13'
 website: ${plugin.website}
 build-hash: ${git.commit.id.abbrev}
@@ -10,6 +9,8 @@ authors:
   - HaHaWTH
   - 0D00_0721
 description: ${plugin.description}
+loadbefore:
+  - AddYourPluginHere
 softdepend:
   - packetevents
   - floodgate
