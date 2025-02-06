@@ -6,7 +6,6 @@ import io.wdsj.asw.bukkit.annotation.PaperEventHandler;
 import io.wdsj.asw.bukkit.listener.*;
 import io.wdsj.asw.bukkit.listener.packet.ASWBookPacketListener;
 import io.wdsj.asw.bukkit.listener.packet.ASWChatPacketListener;
-import io.wdsj.asw.bukkit.listener.paper.PaperChatListener;
 import io.wdsj.asw.bukkit.listener.paper.PaperFakeMessageExecutor;
 import io.wdsj.asw.bukkit.setting.PluginSettings;
 import io.wdsj.asw.bukkit.util.Utils;
@@ -139,7 +138,7 @@ public class ListenerService {
 
     private void registerChatBookEventListeners() {
         if (settingsManager.getProperty(PluginSettings.ENABLE_CHAT_CHECK)) {
-            if (Bukkit.getPluginManager().isPluginEnabled("TrChat") || !registerEventListener(PaperChatListener.class)) {
+            if (true) { // Always listen AsyncPlayerChatEvent
                 registerEventListener(ChatListener.class);
             }
             registerEventListener(CommandListener.class);

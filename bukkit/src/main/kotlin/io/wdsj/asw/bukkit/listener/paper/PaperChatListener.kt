@@ -32,6 +32,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import java.util.*
 
+@Suppress("UNUSED")
 @PaperEventHandler
 class PaperChatListener : Listener {
     @EventHandler(priority = EventPriority.LOWEST)
