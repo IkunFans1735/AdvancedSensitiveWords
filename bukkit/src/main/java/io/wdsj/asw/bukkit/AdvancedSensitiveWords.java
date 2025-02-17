@@ -10,6 +10,7 @@ import com.github.houbb.sensitive.word.api.IWordDeny;
 import com.github.houbb.sensitive.word.api.IWordResultCondition;
 import com.github.houbb.sensitive.word.bs.SensitiveWordBs;
 import com.github.houbb.sensitive.word.support.allow.WordAllows;
+import com.github.houbb.sensitive.word.support.check.WordChecks;
 import com.github.houbb.sensitive.word.support.deny.WordDenys;
 import com.github.houbb.sensitive.word.support.resultcondition.WordResultConditions;
 import com.github.houbb.sensitive.word.support.tag.WordTags;
@@ -233,7 +234,27 @@ public final class AdvancedSensitiveWords extends JavaPlugin {
             } else {
                 wD.set(WordDenys.chains(new WordDeny(), new ExternalWordDeny(this)));
             }
-            sensitiveWordBs = SensitiveWordBs.newInstance().ignoreCase(settingsManager.getProperty(PluginSettings.IGNORE_CASE)).ignoreWidth(settingsManager.getProperty(PluginSettings.IGNORE_WIDTH)).ignoreNumStyle(settingsManager.getProperty(PluginSettings.IGNORE_NUM_STYLE)).ignoreChineseStyle(settingsManager.getProperty(PluginSettings.IGNORE_CHINESE_STYLE)).ignoreEnglishStyle(settingsManager.getProperty(PluginSettings.IGNORE_ENGLISH_STYLE)).ignoreRepeat(settingsManager.getProperty(PluginSettings.IGNORE_REPEAT)).enableNumCheck(settingsManager.getProperty(PluginSettings.ENABLE_NUM_CHECK)).enableEmailCheck(settingsManager.getProperty(PluginSettings.ENABLE_EMAIL_CHECK)).enableUrlCheck(settingsManager.getProperty(PluginSettings.ENABLE_URL_CHECK)).enableWordCheck(settingsManager.getProperty(PluginSettings.ENABLE_WORD_CHECK)).wordResultCondition(condition).wordDeny(wD.get()).wordAllow(wA).numCheckLen(settingsManager.getProperty(PluginSettings.NUM_CHECK_LEN)).wordReplace(new WordReplace()).wordTag(WordTags.none()).charIgnore(new CharIgnore()).enableIpv4Check(settingsManager.getProperty(PluginSettings.ENABLE_IP_CHECK)).init();
+            sensitiveWordBs = SensitiveWordBs.newInstance()
+                    .ignoreCase(settingsManager.getProperty(PluginSettings.IGNORE_CASE))
+                    .ignoreWidth(settingsManager.getProperty(PluginSettings.IGNORE_WIDTH))
+                    .ignoreNumStyle(settingsManager.getProperty(PluginSettings.IGNORE_NUM_STYLE))
+                    .ignoreChineseStyle(settingsManager.getProperty(PluginSettings.IGNORE_CHINESE_STYLE))
+                    .ignoreEnglishStyle(settingsManager.getProperty(PluginSettings.IGNORE_ENGLISH_STYLE))
+                    .ignoreRepeat(settingsManager.getProperty(PluginSettings.IGNORE_REPEAT))
+                    .enableNumCheck(settingsManager.getProperty(PluginSettings.ENABLE_NUM_CHECK))
+                    .enableEmailCheck(settingsManager.getProperty(PluginSettings.ENABLE_EMAIL_CHECK))
+                    .enableUrlCheck(settingsManager.getProperty(PluginSettings.ENABLE_URL_CHECK))
+                    .enableWordCheck(settingsManager.getProperty(PluginSettings.ENABLE_WORD_CHECK))
+                    .wordResultCondition(condition)
+                    .wordCheckUrl(settingsManager.getProperty(PluginSettings.URL_CHECK_NO_PREFIX) ? WordChecks.urlNoPrefix() : WordChecks.url())
+                    .wordDeny(wD.get())
+                    .wordAllow(wA)
+                    .numCheckLen(settingsManager.getProperty(PluginSettings.NUM_CHECK_LEN))
+                    .wordReplace(new WordReplace())
+                    .wordTag(WordTags.none())
+                    .charIgnore(new CharIgnore())
+                    .enableIpv4Check(settingsManager.getProperty(PluginSettings.ENABLE_IP_CHECK))
+                    .init();
             isInitialized = true;
         });
     }

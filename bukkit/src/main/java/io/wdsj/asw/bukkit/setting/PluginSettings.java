@@ -255,6 +255,10 @@ public class PluginSettings implements SettingsHolder {
             "Whether to enable URL checks (http://xxx.xxx)"})
     public static final Property<Boolean> ENABLE_URL_CHECK = newProperty("Plugin.enableUrlCheck", true);
 
+    @Comment({"网址检测是否不需要https前缀",
+            "Whether to detect urls without https prefix"})
+    public static final Property<Boolean> URL_CHECK_NO_PREFIX = newProperty("Plugin.urlCheckNoPrefix", false);
+
     @Comment({"启用敏感英文单词检测",
             "Whether to enable sensitive English word checks"})
     public static final Property<Boolean> ENABLE_WORD_CHECK = newProperty("Plugin.enableWordCheck", true);

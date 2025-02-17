@@ -62,5 +62,5 @@ object BookCache {
     /**
      * Inner class to encapsulate the processed book content and its list of sensitive words.
      */
-    private class BookCacheEntry(val processedContent: String, val sensitiveWordList: List<String>)
+    private data class BookCacheEntry(val processedContent: String, val sensitiveWordList: List<String>)
 }
